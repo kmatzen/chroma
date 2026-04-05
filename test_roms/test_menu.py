@@ -314,7 +314,7 @@ def test_autofire_toggle(tmpdir):
 
     # The menu text should change (autofire OFF → Hold)
     d = pixel_diff_pct(before, after)
-    passed = d > 0.1  # text change is only a few pixels
+    passed = d > 0.05  # sharp pixel font: OFF→Hold is ~27 pixels (0.07%)
     print(f"  Menu diff after toggle: {d:.1f}% {'PASS' if passed else 'FAIL'}")
     return passed
 
