@@ -195,7 +195,10 @@ void showlicense()
 	drawtext(11,"under the terms of the",0);
 	drawtext(12,"GNU GPL v2.",0);
 	drawtext(14,"github.com/kmatzen/chroma",0);
-	drawtext(16,"See LICENSE for details.",0);
+#ifdef GIT_HASH
+	drawtext(15,"build " GIT_HASH,0);
+#endif
+	drawtext(17,"See LICENSE for details.",0);
 	drawtext(19,"        Press B to return",0);
 	scrolll(0);
 	oldkey=~REG_P1;
