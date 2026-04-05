@@ -183,23 +183,23 @@ void subui(int menunr)
 void showlicense()
 {
 	int key;
-	cls(1);
-	drawtext(0, "        ChromA License",0);
-	drawtext(2, "GNU General Public License v2",0);
-	drawtext(4, "(C) 2026 BunBunnBunny",0);
-	drawtext(5, "(C) 2021 EvilJagaGenius",0);
-	drawtext(6, "(C) 2006-2019 Dan Weiss",0);
-	drawtext(7, "(C) 2003-2006 Fredrik Olsson",0);
-	drawtext(9, "This is free software.",0);
-	drawtext(10,"You may redistribute it",0);
-	drawtext(11,"under the terms of the",0);
-	drawtext(12,"GNU GPL v2.",0);
-	drawtext(14,"github.com/kmatzen/chroma",0);
+	cls(2);
+	drawtext(32,"        ChromA License",0);
+	drawtext(34,"GNU General Public License v2",0);
+	drawtext(36,"(C) 2026 BunBunnBunny",0);
+	drawtext(37,"(C) 2021 EvilJagaGenius",0);
+	drawtext(38,"(C) 2006-2019 Dan Weiss",0);
+	drawtext(39,"(C) 2003-2006 Fredrik Olsson",0);
+	drawtext(41,"This is free software.",0);
+	drawtext(42,"You may redistribute it",0);
+	drawtext(43,"under the terms of the",0);
+	drawtext(44,"GNU GPL v2.",0);
+	drawtext(46,"github.com/kmatzen/chroma",0);
 #ifdef GIT_HASH
-	drawtext(15,"build " GIT_HASH,0);
+	drawtext(47,"build " GIT_HASH,0);
 #endif
-	drawtext(17,"See LICENSE for details.",0);
-	drawtext(19,"        Press B to return",0);
+	drawtext(49,"See LICENSE for details.",0);
+	drawtext(51,"        Press B to return",0);
 	scrolll(0);
 	oldkey=~REG_P1;
 	do {
@@ -210,7 +210,6 @@ void showlicense()
 		waitframe();
 		key=~REG_P1;
 	}
-	drawui1();
 	scrollr(0);
 }
 
