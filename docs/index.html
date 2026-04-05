@@ -106,7 +106,7 @@
 <p class="sub">Game Boy &middot; Game Boy Color &middot; on GBA</p>
 
 <div class="screen-wrap" id="screen-wrap">
-  <canvas id="screen" width="240" height="160"></canvas>
+  <canvas id="screen" width="240" height="160" tabindex="0"></canvas>
 </div>
 
 <p class="keys">
@@ -184,10 +184,27 @@ async function loadGB(file) {
     setStatus('', '');
     dropZone.classList.add('hidden');
     screenWrap.classList.add('playing');
+    canvas.focus();
   } else {
     setStatus('Failed to load ROM', 'error');
   }
 }
+
+const keyMap = {
+  'ArrowUp': 'Up', 'ArrowDown': 'Down', 'ArrowLeft': 'Left', 'ArrowRight': 'Right',
+  'x': 'A', 'X': 'A', 'z': 'B', 'Z': 'B',
+  'Enter': 'Start', 'Backspace': 'Select',
+  'a': 'L', 'A': 'L', 's': 'R', 'S': 'R'
+};
+
+window.addEventListener('keydown', e => {
+  if (keyMap[e.key]) e.preventDefault();
+  if (emu && keyMap[e.key]) emu.buttonPress(keyMap[e.key]);
+});
+
+window.addEventListener('keyup', e => {
+  if (emu && keyMap[e.key]) emu.buttonUnpress(keyMap[e.key]);
+});
 
 dropZone.addEventListener('click', () => romInput.click());
 romInput.addEventListener('change', e => { if (e.target.files[0]) loadGB(e.target.files[0]); });
